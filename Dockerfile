@@ -33,7 +33,7 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-s
   	&& update-ca-certificates
 
 # Install docker
-RUN wget -O /usr/local/bin/docker https://get.docker.com/builds/Linux/x86_64/docker-1.11.1 && chmod +x /usr/local/bin/docker
+RUN curl -s https://get.docker.com/builds/Linux/x86_64/docker-1.11.1.tgz | tar -xz -C /usr/local/bin --strip-components=1
 
 RUN groupadd docker && adduser --disabled-password --gecos "" teamcity \
 	&& sed -i -e "s/%sudo.*$/%sudo ALL=(ALL:ALL) NOPASSWD:ALL/" /etc/sudoers \
